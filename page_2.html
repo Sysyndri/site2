@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/semantic-ui-css/semantic.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="node_modules/semantic-ui-css/semantic.min.js"></script>
+    <title>Безопасность Web-ресурсов</title>
+</head>
+<body>
+    <header class="page-header">
+        <nav class="header-nav nav">
+            <div class="ui link list nav-list">
+                <a class="item" href="index.html"><ya-tr-span data-index="158-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Home" data-translation="Главная" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Главная</ya-tr-span></a>
+                <div class="active item"><ya-tr-span data-index="159-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Security" data-translation="Защита" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Защита</ya-tr-span></div>
+                <a class="item" href="page_3.html"><ya-tr-span data-index="159-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Injections" data-translation="Инъекции" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Инъекции</ya-tr-span></a>
+                <a class="item" href="page_4.html"><ya-tr-span data-index="159-3" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="csrf" data-translation="csrf" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">CSRF</ya-tr-span></a>
+                <a class="item" href="page_5.html"><ya-tr-span data-index="159-4" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Protection Analysis" data-translation="Анализ Защиты" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Анализ Защиты</ya-tr-span></a>
+                <a class="item" href="page_6.html"><ya-tr-span data-index="159-5" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Buffer overflow" data-translation="Переполнение буфера" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Переполнение буфера</ya-tr-span></a>
+            </div>
+        </nav>
+    </header>
+    <main class="page-main">
+        <h1 class="ui header"><ya-tr-span class="main-header" data-index="84-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="First header" 
+            data-translation="Первый заголовок" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Безопасность веб-приложений: анализ методов защиты от атак на уровне Backend</ya-tr-span></h1>
+        <div class="container-grid">
+            <div class="container">
+                <section class="section security">
+                    <h2 class="title-h2">Защита</h2>
+                    <p class="text-p"><b>Защита</b> - это процесс принятия мер для обеспечения безопасности, сохранности 
+                        и целостности чего-либо от угроз и рисков. В контексте информационных технологий и компьютерной 
+                        безопасности защита включает в себя широкий спектр мероприятий, направленных на обеспечение безопасности 
+                        информации, систем и ресурсов.
+                    </p>
+                    <p class="text-p">Основные аспекты защиты включают в себя:</p>
+                    <ol class="list security-list">
+                        <li class="secutity-li">
+                            <p class="text-p">
+                                <b>Предотвращение:</b> Это меры, направленные на предотвращение возникновения угроз безопасности 
+                                и атак. Они включают в себя реализацию политик безопасности, применение наилучших практик и стандартов, 
+                                обучение персонала и использование технологий, способных выявить и блокировать потенциальные угрозы.
+                            </p>
+                        </li>
+                        <li class="secutity-li">
+                            <p class="text-p">
+                                <b>Обнаружение:</b> Это меры, предпринимаемые для обнаружения возможных угроз и инцидентов безопасности. 
+                                Это включает в себя мониторинг и анализ деятельности системы, обнаружение аномального поведения и сигналов 
+                                безопасности, а также регулярное аудитирование системы.
+                            </p>
+                        </li>
+                        <li class="secutity-li">
+                            <p class="text-p">
+                                <b>Реагирование:</b> Это меры, предпринимаемые для реагирования на обнаруженные угрозы и инциденты безопасности. 
+                                Они включают в себя быстрое реагирование на инциденты, изоляцию и ликвидацию уязвимостей, восстановление системы 
+                                после атаки и предотвращение повторного возникновения угрозы.
+                            </p>
+                        </li>
+                        <li class="secutity-li">
+                            <p class="text-p">
+                                <b>Восстановление:</b> Это меры, направленные на восстановление нормальной работы системы после инцидента 
+                                безопасности. Это может включать в себя восстановление данных из резервных копий, обновление программного 
+                                обеспечения и систем, а также анализ причин инцидента для предотвращения его повторного возникновения.
+                            </p>
+                        </li>
+                    </ol>
+                </section>
+                    
+                <section class="section danger">
+                    <h2 class="title-h2">Угроза</h2>
+                    <p class="text-p">Угроза (англ. threat) - это любой потенциальный событийный или действенный фактор, 
+                        который может нанести вред системе, данным или ресурсам. В контексте информационной безопасности, 
+                        угроза представляет собой возможность возникновения инцидента безопасности или нарушения безопасности информации.</p>
+                    <p class="text-p">Угрозы могут происходить как из внутреннего, так и из внешнего окружения организации. 
+                        Они могут быть связаны с действиями злоумышленников, ошибками персонала, техническими неисправностями, 
+                        естественными бедствиями и другими факторами.</p>
+                    <p class="text-p">В информационной безопасности угрозы классифицируются на различные типы в зависимости от их 
+                        характеристик, таких как:</p>
+                    <ol class="list danger-list">
+                        <li class="danger-li">
+                            <p class="text-p">
+                                <b>Угрозы конфиденциальности:</b> Направлены на неправомерное получение или раскрытие конфиденциальной информации. 
+                                Примеры: утечка личных данных, взлом аккаунтов.
+                            </p>
+                        </li>
+                        <li class="danger-li">
+                            <p class="text-p">
+                                <b>Угрозы целостности:</b> Направлены на несанкционированные изменения или модификации данных. Примеры: вирусы, 
+                                вредоносные программы, атаки на веб-сайты.
+                            </p>
+                        </li>
+                        <li class="danger-li">
+                            <p class="text-p">
+                                <b>Угрозы доступности:</b> Направлены на снижение доступности системы или данных для легальных пользователей. 
+                                Примеры: DDoS-атаки, сетевые сбои, физические повреждения оборудования.
+                            </p>
+                        </li>
+                        <li class="danger-li">
+                            <p class="text-p">
+                                <b>Угрозы подлинности:</b> Направлены на подмену или поддельное представление личности или данных. Примеры: 
+                                поддельные входные данные, подделка идентификационной информации.
+                            </p>
+                        </li>
+                        <li class="danger-li">
+                            <p class="text-p">
+                                <b>Угрозы авторизации:</b> Направлены на несанкционированное получение доступа к системе или ресурсам. 
+                                Примеры: атаки на пароли, перехват сеансов.
+                            </p>
+                        </li>
+                    </ol>
+                </section>
+                <section class="section attack">
+                    <h2 class="title-h2">Атака</h2>
+                    <p class="text-p"><b>Атака</b> (англ. attack) в контексте информационной безопасности представляет собой действие или 
+                        серию действий, направленных на нарушение конфиденциальности, целостности или доступности информации или ресурсов. 
+                        Атака может осуществляться злоумышленниками, компьютерными программами (вирусами, червями и т. д.) или другими 
+                        субъектами с целью нанесения ущерба, получения незаконного доступа или иного противозаконного воздействия.</p>
+                </section>
+                <section class="section backend">
+                    <h2 class="backend">Backend</h2>
+                    <p class="text-p"><b>Backend</b> (серверная часть) веб-приложения представляет собой ту часть программного обеспечения, которая 
+                        обрабатывает данные, взаимодействует с базами данных, выполняет бизнес-логику приложения и обеспечивает связь с клиентской 
+                        (frontend) частью приложения.</p>
+                    <p class="text-p">Основные характеристики и функции Backend включают:</p>
+                    <ol class="list backend-list">
+                        <li class="backend-li">
+                            <p class="text-p">
+                                <b>Обработка запросов:</b> Backend принимает HTTP-запросы от клиентской части приложения (например, веб-браузера) 
+                                и обрабатывает их, генерируя соответствующие ответы.
+                            </p>
+                        </li>
+                        <li class="backend-li">
+                            <p class="text-p">
+                                <b>Работа с базами данных:</b> Backend взаимодействует с базами данных для сохранения, получения и обработки данных, 
+                                необходимых для работы приложения.
+                            </p>
+                        </li>
+                        <li class="backend-li">
+                            <p class="text-p">
+                                <b>Бизнес-логика:</b> В backend реализуется бизнес-логика приложения, которая определяет, как приложение должно обрабатывать
+                                 данные и выполнять различные операции.
+                            </p>
+                        </li>
+                        <li class="backend-li">
+                            <p class="text-p">
+                                <b>Аутентификация и авторизация:</b> Backend обеспечивает механизмы аутентификации пользователей (проверку подлинности) и 
+                                авторизации (управление правами доступа к данным и функционалу).
+                            </p>
+                        </li>
+                        <li class="backend-li">
+                            <p class="text-p">
+                                <b>Обеспечение безопасности:</b> Backend отвечает за защиту данных и обеспечение безопасности приложения, включая защиту 
+                                от уязвимостей и атак.
+                            </p>
+                        </li>
+                        <li class="backend-li">
+                            <p class="text-p">
+                                <b>API и взаимодействие с другими сервисами:</b> Backend может предоставлять API (интерфейсы программирования приложений) для 
+                                взаимодействия с другими внешними сервисами и приложениями.
+                            </p>
+                        </li>
+                    </ol>
+
+                    <p class="text-p">
+                        Зачем же так важно обеспечивать защиту веб-приложений? Предоставление безопасной среды для обработки и хранения данных — это не только 
+                        ответственность перед пользователями, но и необходимость для долгосрочного успеха бизнеса. Пользователи ожидают, что их данные будут 
+                        храниться и обрабатываться надежно, без риска утечки или изменения без их согласия. Кроме того, нарушение работы веб-приложений может
+                        привести к негативным последствиям как для пользователей, так и для бизнеса. Потеря доступности сервиса может привести к потере клиентов, 
+                        доверия и доходов.
+                    </p>
+                    <p class="text-p">
+                        Понятие защиты данных и функционала веб-приложений охватывает широкий спектр мер и технологий, направленных на предотвращение, обнаружение 
+                        и реагирование на угрозы безопасности. Это включает в себя не только технические аспекты, такие как использование шифрования и механизмов 
+                        аутентификации, но и организационные меры, такие как обучение персонала, разработка политик безопасности и регулярное аудитирование системы.
+                    </p>
+                    
+                </section>
+            </div>
+            
+            <aside class="side-bar">боковой сайд бар</aside>
+        </div>
+        
+        <div class="ui buttons">
+            <a href="index.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="One" data-translation="Раз" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">1</ya-tr-span></button>
+            </a><a class="page-pagination-link current">
+                <button class="ui button"><ya-tr-span data-index="225-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Two" data-translation="Два" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">2</ya-tr-span></button>
+            </a><a href="page_3.html" class="page-pagination-link">
+                <button class="ui button" ><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Three" data-translation="Три" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">3</ya-tr-span></button>
+            </a><a href="page_4.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Four" data-translation="Четыре" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">4</ya-tr-span></button>
+            </a><a href="page_5.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Five" data-translation="Пять" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">5</ya-tr-span></button>
+            </a><a href="page_6.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Six" data-translation="Шесть" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">6</ya-tr-span></button>       
+            </a>
+        </div>   
+    </main>
+    <footer class="page-footer">
+        <div>футер</div>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/semantic-ui-css/semantic.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="node_modules/semantic-ui-css/semantic.min.js"></script>
+    <title>Безопасность Web-ресурсов</title>
+</head>
+<body>
+    <header class="page-header">
+        <nav class="header-nav nav">
+            <div class="ui link list nav-list">
+                <a class="item" href="index.html"><ya-tr-span data-index="158-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Home" data-translation="Главная" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Главная</ya-tr-span></a>
+                <a class="item" href="page_2.html"><ya-tr-span data-index="159-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Security" data-translation="Защита" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Защита</ya-tr-span></a>
+                <a class="item" href="page_3.html"><ya-tr-span data-index="159-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Injections" data-translation="Инъекции" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Инъекции</ya-tr-span></a>
+                <div class="active item"><ya-tr-span data-index="159-3" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="csrf" data-translation="csrf" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">CSRF</ya-tr-span></div>
+                <a class="item" href="page_5.html"><ya-tr-span data-index="159-4" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Protection Analysis" data-translation="Анализ Защиты" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Анализ Защиты</ya-tr-span></a>
+                <a class="item" href="page_6.html"><ya-tr-span data-index="159-5" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Buffer overflow" data-translation="Переполнение буфера" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Переполнение буфера</ya-tr-span></a>
+            </div>
+        </nav>
+    </header>
+    <main class="page-main">
+        <h1 class="ui header"><ya-tr-span class="main-header" data-index="84-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="First header" 
+            data-translation="Первый заголовок" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Безопасность веб-приложений: анализ методов защиты от атак на уровне Backend</ya-tr-span></h1>
+        <div class="container-grid">
+            <div class="container">
+                <section class="section csrf">
+                    <h2 class="title-h2">CSRF (англ. Cross-Site Request Forgery — «межсайтовая запросная подделка»)</h2>
+                    <p class="text-p">Один из наиболее распространенных типов атак, где злоумышленник вынуждает 
+                        аутентифицированного пользователя выполнить нежелательные действия на веб-сайте, на котором пользователь уже авторизован.
+                    </p>
+                    <p class="text-p">Потенциальные последствия включают:</p>
+                    <ul class="list crsf-list">
+                        <li class="crsf-li">
+                            <p>
+                                <b>Изменение данных:</b> Смена пароля, адреса электронной почты.
+                            </p>
+                        </li>
+                        <li class="crsf-li">
+                            <p>
+                                <b>Создание нежелательных действия:</b> Совершение транзакций, публикация контента.
+                            </p>
+                        </li>
+                        <li class="crsf-li">
+                            <p>
+                                <b>Использование привилегий:</b> Если пользователь обладает правами администратора, то злоумышленник может удалить весь контент, 
+                                изменить данные в базе данных и т.д.
+                            </p>
+                        </li>
+                    </ul>
+                    <p class="text-p"><b>Продемонстрируем на примере</b></p>
+                    <p class="text-p">Допустим у нас есть интернет магазин - <b>"buyOnline"</b>. На сайте есть возможность изменить свой пароль через форму:</p>
+                    <pre class="scripting-code">
+<code class="code code-html">
+<span class="code-html-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="code-html-color">&lt;html&gt;</span>
+<span class="code-html-color">&lt;head&gt;</span>
+    <span class="code-html-color">&lt;title</title>&gt;</span>Buy Online - Change Password<span class="code-html-color">&lt;/title&gt;</span>
+<span class="code-html-color">&lt;/head&gt;</span>
+<span class="code-html-color">&lt;body&gt;</span>
+    <span class="code-html-color">&lt;h1&gt;</span>Смена пароля<span class="code-html-color">&lt;/h1&gt;</span>
+    <span class="code-html-color">&lt;form method</span>=<span class="code-html-green">"post"</span><span class="code-html-color">&gt;</span>
+        <span class="code-html-color">&lt;label for</span>=<span class="code-html-green">"new_password"</span><span class="code-html-color">&lt;/label&gt;</span>
+        <span class="code-html-color">&lt;input type</span>=<span class="code-html-green">"password"</span><span class="code-html-color"> id</span>=<span class="code-html-green">"new_password"</span><span class="code-html-color"> name</span>=<span class="code-html-green">"new_password"</span><span class="code-html-color">&gt;</span>
+        <span class="code-html-color">&lt;input type</span>=<span class="code-html-green">"submit"</span><span class="code-html-color"> value</span>=<span class="code-html-green">"Сменить пароль"</span><span class="code-html-color">&gt;</span>
+    <span class="code-html-color">&lt;/form&gt;</span>
+<span class="code-html-color">&lt;/body&gt;</span>
+<span class="code-html-color">&lt;/html&gt;</span>
+</code>  
+                    </pre>
+                    <p class="text-p">Пускай теперь нашелся злоумышленник, который создал вредоносный сайт, который содержит следующий код:</p>
+
+                    <pre>
+<code class="code code-html">
+<span class="code-html-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="code-html-color">&lt;html&gt;</span>
+<span class="code-html-color">&lt;head&gt;</span>
+    <span class="code-html-color">&lt;title</title>&gt;</span>Вредоносный сайт<span class="code-html-color">&lt;/title&gt;</span>
+<span class="code-html-color">&lt;/head&gt;</span>
+<span class="code-html-color">&lt;body&gt;</span>
+    <span class="code-html-color">&lt;h1&gt;</span>Вы выиграли приз! Нажмите кнопку, чтобы получить его:<span class="code-html-color">&lt;/h1&gt;</span>
+    <span class="code-html-color">&lt;form action</span>=<span class="code-html-green">"http://victim-site.com/change_password"</span><span class="code-html-color"> method</span>=<span class="code-html-green">"post"</span><span class="code-html-color">&gt;</span>
+        <span class="code-html-color">&lt;label for</span>=<span class="code-html-green">"new_password"</span><span class="code-html-color">&lt;/label&gt;</span>
+        <span class="code-html-color">&lt;input type</span>=<span class="code-html-green">"hidden"</span><span class="code-html-color"> id</span>=<span class="code-html-green">"new_password"</span><span class="code-html-color"> name</span>=<span class="code-html-green">"hacked_password"</span><span class="code-html-color">&gt;</span>
+        <span class="code-html-color">&lt;input type</span>=<span class="code-html-green">"submit"</span><span class="code-html-color"> value</span>=<span class="code-html-green">"Получить приз"</span><span class="code-html-color">&gt;</span>
+    <span class="code-html-color">&lt;/form&gt;</span>
+<span class="code-html-color">&lt;/body&gt;</span>
+<span class="code-html-color">&lt;/html&gt;</span>
+</code>  
+                    </pre>
+
+                    <p class="text-p">Злоумышленник отправляет жертве ссылку на свой вредоносный сайт, при этом он авторизован на сайте интернет-магазина. 
+                        Когда жертва открывает эту страницу, скрипт на вредоносном сайте автоматически отправляет POST-запрос на сайте интернет-магазина с новым паролем, 
+                        установленным злоумышленником (<span class="outline">hacked_password</span>). Поскольку жертва уже аутентифицирована на сайте интернет-магазина, этот запрос будет выполнен 
+                        от её имени, и её пароль будет изменён на <span class="outline">hacked_password</span> без её согласия или ведома.</p>
+                </section>
+
+            </div>
+            
+            <aside class="side-bar">боковой сайд бар</aside>
+        </div>
+        
+        <div class="ui buttons">
+            <a href="index.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="One" data-translation="Раз" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">1</ya-tr-span></button>
+            </a><a href="page_2.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Two" data-translation="Два" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">2</ya-tr-span></button>
+            </a><a href="page_3.html" class="page-pagination-link">
+                <button class="ui button" ><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Three" data-translation="Три" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">3</ya-tr-span></button>
+            </a><a class="page-pagination-link current">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Four" data-translation="Четыре" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">4</ya-tr-span></button>
+            </a><a href="page_5.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Five" data-translation="Пять" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">5</ya-tr-span></button>
+            </a><a href="page_6.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Six" data-translation="Шесть" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">6</ya-tr-span></button>       
+            </a>
+        </div> 
+    </main>
+    <footer class="page-footer">
+        <div>футер</div>
+    </footer>
+    
+</body>
+</html>

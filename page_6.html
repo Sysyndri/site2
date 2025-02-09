@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/semantic-ui-css/semantic.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="node_modules/semantic-ui-css/semantic.min.js"></script>
+    <title>Безопасность Web-ресурсов</title>
+</head>
+<body>
+    <header class="page-header">
+        <nav class="header-nav nav">
+            <div class="ui link list nav-list">
+                <a class="item" href="index.html"><ya-tr-span data-index="158-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Home" data-translation="Главная" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Главная</ya-tr-span></a>
+                <a class="item" href="page_2.html"><ya-tr-span data-index="159-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Security" data-translation="Защита" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Защита</ya-tr-span></a>
+                <a class="item" href="page_3.html"><ya-tr-span data-index="159-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Injections" data-translation="Инъекции" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Инъекции</ya-tr-span></a>
+                <a class="item" href="page_4.html"><ya-tr-span data-index="159-3" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="csrf" data-translation="csrf" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">CSRF</ya-tr-span></a>
+                <a class="item" href="page_5.html"><ya-tr-span data-index="159-4" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Protection Analysis" data-translation="Анализ Защиты" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Анализ Защиты</ya-tr-span></a>
+                <div class="active item"><ya-tr-span data-index="159-5" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Buffer overflow" data-translation="Переполнение буфера" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Переполнение буфера</ya-tr-span></div>
+            </div>
+        </nav>
+    </header>
+    <main class="page-main">
+        <h1 class="ui header"><ya-tr-span class="main-header" data-index="84-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="First header" 
+            data-translation="Первый заголовок" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Безопасность веб-приложений: анализ методов защиты от атак на уровне Backend</ya-tr-span></h1>
+        <div class="container-grid">
+            <div class="container">
+                
+                <section class="section over-buffer">
+                    <h2 class="title-h2">Переполнение буфера</h2>
+                    <p class="text-p">Для защиты от атак, связанных с переполнением буфера, существует несколько методов:</p>
+                    <ul class="list over-buffer-list">
+                        <li class="over-bufer-li">
+                            <p class="text-p">
+                                <b>Проверка длины данных:</b> Один из подходов к предотвращению переполнения буфера - 
+                                это проверка длины входных данных перед копированием или записью в буфер. Путем проверки, 
+                                что входные данные не превышают максимально допустимую длину, программное обеспечение может 
+                                избежать записи данных за пределами выделенной памяти.
+                            </p>
+                        </li>
+                        <li class="over-bufer-li">
+                            <p class="text-p">
+                                <b>Использование защитных механизмов операционной системы:</b> Некоторые операционные системы 
+                                предоставляют защитные механизмы, такие как ASLR (Address Space Layout Randomization) и DEP 
+                                (Data Execution Prevention), которые могут предотвращать или затруднять успешные атаки, связанные с переполнением буфера.
+                            </p>
+                        </li>
+                        <li class="over-bufer-li">
+                            <p class="text-p">
+                                <b>Использование безопасных функций:</b> Множество языков программирование предоставляют безопасные функции, 
+                                которые предотвращают переполнение буфера, так как они требуют указания максимальной длины буфера.
+                            </p>
+                        </li>
+                    </ul>
+                    
+                </section>
+                <section class="section csrf">
+                    <h2 class="title-h2">CSRF</h2>
+                    <p class="text-p">Самые популярные методы для предотвращения CSRF атаки:</p> 
+                    <ul class="list csrf-list">
+                        <li class="csrf-li">
+                            <p class="text-p">
+                                <b>Использование CSRF-токенов:</b> Этот метод заключается в генерации уникального токена 
+                                для каждой сессии пользователя и включении этого токена в каждый запрос, который изменяет состояние сервера. Сервер проверяет наличие и 
+                                корректность этого токена при получении запроса. Это эффективно предотвращает атаки CSRF, так как злоумышленник не сможет подделать 
+                                или украсть этот уникальный токен.
+                            </p>
+                        </li>
+                        <li class="csrf-li">
+                            <p class="text-p">
+                                <b>SameSite Cookies:</b> Это новая функциональность, представленная в стандарте 
+                                HTTP Cookies, которая позволяет сайтам указывать, в каком контексте (домене) должны использоваться их куки.
+                            </p>
+                            <p class="text-p">Спецификация SameSite Cookie предоставляет три варианта значения для этой функциональности:</p>
+                            <p class="text-p">
+                                <b>SameSite=None:</b> Куки с этим значением могут быть отправлены вместе с запросами, инициированными из любого сайта (кросс-сайтовые запросы),
+                                 но только если они инициированы с помощью безопасных контекстов (HTTPS). Это позволяет кукам использоваться в составе запросов AJAX между доменами.
+                            </p>
+                            <p class="text-p">
+                                <b>SameSite=Strict:</b> Куки с этим значением не будут отправляться вместе с кросс-сайтовыми запросами. 
+                                Они будут отправляться только в том случае, если запросы инициированы с того же сайта, с которого были установлены куки.
+                            </p>
+                            <p class="text-p">
+                                <b>SameSite=Lax:</b> Похож на Strict, но с небольшими исключениями. Куки SameSite=Lax будут отправлены с кросс-сайтовыми запросами, 
+                                если они инициированы с помощью безопасных методов (например, ссылки с GET-параметрами), но не с другими запросами, такими как POST.
+                            </p>
+                        </li>
+                        <li class="csrf-li">
+                            <p class="text-p">
+                                <b>Проверка Referer заголовка:</b> Сервер может проверять заголовок Referer для каждого запроса, чтобы убедиться, 
+                                что запрос происходит с того же источника, откуда была получена страница.
+                            </p>
+                        </li>
+                        <li class="csrf-li">
+                            <p class="text-p">
+                                <b>Двойная проверка записи (англ. Double Submit Cookie)</b> При этом методе вместо одного токена CSRF используются два токена: 
+                                один в куках и один в форме запроса. При получении запроса сервер проверяет, совпадают ли эти токены.
+                            </p>
+                        </li>
+                    </ul>
+                    
+                </section>
+
+            </div>
+            
+            <aside class="side-bar">боковой сайд бар</aside>
+        </div>
+        
+        <div class="ui buttons">
+            <a href="index.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="One" data-translation="Раз" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">1</ya-tr-span></button>
+            </a><a href="page_2.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Two" data-translation="Два" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">2</ya-tr-span></button>
+            </a><a href="page_3.html" class="page-pagination-link">
+                <button class="ui button" ><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Three" data-translation="Три" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">3</ya-tr-span></button>
+            </a><a href="page_4.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Four" data-translation="Четыре" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">4</ya-tr-span></button>
+            </a><a href="page_5.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Five" data-translation="Пять" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">5</ya-tr-span></button>
+            </a><a class="page-pagination-link current">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Six" data-translation="Шесть" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">6</ya-tr-span></button>       
+            </a>
+        </div>
+    </main>
+    <footer class="page-footer">
+        <div>футер</div>
+    </footer>
+    
+</body>
+</html>

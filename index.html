@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/semantic-ui-css/semantic.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="node_modules/semantic-ui-css/semantic.min.js"></script>
+    <title>Безопасность Web-ресурсов</title>
+</head>
+<body>
+    <header class="page-header">
+        <nav class="header-nav nav">
+            <div class="ui link list nav-list">
+                <div class="active item"><ya-tr-span data-index="158-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Home" data-translation="Главная" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Главная</ya-tr-span></div>
+                <a class="item" href="page_2.html"><ya-tr-span data-index="159-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Security" data-translation="Защита" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Защита</ya-tr-span></a>
+                <a class="item" href="page_3.html"><ya-tr-span data-index="159-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Injections" data-translation="Инъекции" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Инъекции</ya-tr-span></a>
+                <a class="item" href="page_4.html"><ya-tr-span data-index="159-3" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="csrf" data-translation="csrf" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">CSRF</ya-tr-span></a>
+                <a class="item" href="page_5.html"><ya-tr-span data-index="159-4" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Protection Analysis" data-translation="Анализ Защиты" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Анализ Защиты</ya-tr-span></a>
+                <a class="item" href="page_6.html"><ya-tr-span data-index="159-5" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Buffer overflow" data-translation="Переполнение буфера" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Переполнение буфера</ya-tr-span></a>
+            </div>
+        </nav>
+    </header>
+    <main class="page-main">
+        <h1 class="ui header"><ya-tr-span class="main-header" data-index="84-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="First header" 
+            data-translation="Первый заголовок" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Безопасность веб-приложений: анализ методов защиты от атак на уровне Backend</ya-tr-span></h1>
+        <div class="container-grid">
+            <div class="container">
+                <section class="section confidentiality">
+                    <h2 class="ui header"><ya-tr-span data-index="85-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Second header" data-translation="Второй заголовок" data-ch="0" 
+                        data-type="trSpan" style="visibility: inherit !important;">Конфиденциальность</ya-tr-span></h2>
+                    <p class="text-p">В современном цифровом мире, где веб-приложения становятся неотъемлемой частью нашей 
+                        повседневной жизни, безопасность данных и функционала приложений становится вопросом первостепенной важности. 
+                        Виртуализация услуг, мобильные технологии, облачные вычисления и интернет вещей (англ. IoT) — все эти тенденции 
+                        привели к росту количества веб-приложений и увеличению их значимости для бизнеса и конечных пользователей. 
+                        Однако, вместе с возможностями, которые предоставляют веб-приложения, возникают и новые угрозы безопасности, 
+                        ставящие под угрозу конфиденциальность, целостность и доступность данных.
+                    </p>
+                    <p class="text-p"><b>Конфиденциальность</b> - это принцип и состояние информации, при котором доступ к ней ограничен только 
+                        определенным лицам или группам лиц, которым эта информация доверена, и которые имеют право использовать ее в соответствии 
+                        с установленными правилами и политиками.
+                    </p>
+                    <p class="text-p">Конфиденциальность включает в себя:</p>
+                    <ol class="list confidentiality-list">
+                        <li class="confidentiality-li">
+                            <p class="text-p text-list-p">
+                                <b>Ограниченный доступ:</b> Информация должна быть доступна только тем лицам или группам лиц, 
+                                которым это необходимо для выполнения их обязанностей или функций.
+                            </p>
+                        </li>
+                        <li class="confidentiality-li">
+                            <p class="text-p text-list-p">
+                                <b>Защита от несанкционированного доступа:</b> Информация должна быть защищена от несанкционированного доступа, 
+                                такого как хакерские атаки, утечки данных или кражи.
+                            </p>
+                        </li>
+                        <li class="confidentiality-li">
+                            <p class="text-p text-list-p">
+                                <b>Шифрование:</b> Часто используется шифрование для защиты конфиденциальной информации во время передачи или хранения, 
+                                чтобы предотвратить ее читаемость для несанкционированных лиц.
+                            </p>
+                        </li>
+                        <li class="confidentiality-li">
+                            <p class="text-p text-list-p">
+                                <b>Управление правами доступа:</b> Контроль прав доступа позволяет определять, какие пользователи или группы пользователей имеют 
+                                доступ к какой информации, и определять уровень этого доступа (например, чтение, запись, исполнение).
+                            </p>
+                        </li>
+                        <li class="confidentiality-li">
+                            <p class="text-p text-list-p">
+                                <b>Обучение персонала:</b> Важно обучать персонал правилам и процедурам защиты конфиденциальной информации, чтобы 
+                                предотвратить случайные утечки или нарушения.
+                            </p>
+                        </li>
+                        <li class="confidentiality-li">
+                            <p class="text-p text-list-p">
+                                <b>Физическая защита:</b> Информация может быть защищена физическими мерами безопасности, такими как замки, ключи, карточки 
+                                доступа и контролируемые доступные помещения.
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+                <section class="section integrity">
+                    <h2 class="ui header"><ya-tr-span data-index="85-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Second header" 
+                        data-translation="Второй заголовок" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Целостность</ya-tr-span></h2>
+                    <p class="text-p">
+                        <b>Целостность</b> данных относится к их сохранности и неприкосновенности. В контексте информационной 
+                        безопасности, целостность означает, что данные остаются неизменными и неиспорченными во время их 
+                        передачи, хранения или обработки. Другими словами, данные должны оставаться точными, полными и 
+                        неизменными относительно того, как они были созданы или зафиксированы.
+                    </p>
+                    <p class="text-p">
+                        Основная цель обеспечения целостности данных состоит в том, чтобы гарантировать, что никакие несанкционированные 
+                        изменения не внесены в информацию. Это важно для предотвращения искажений, ошибок или злонамеренных манипуляций, 
+                        которые могут привести к недостоверности или утрате ценной информации.
+                    </p>
+                    <p class="text-p">
+                        Примеры методов обеспечения целостности данных включают в себя использование хэш-функций для проверки целостности файлов, 
+                        цифровые подписи для проверки аутентичности сообщений, контрольные суммы для обнаружения ошибок в передаче данных, 
+                        а также методы контроля версий и аудита для отслеживания изменений в данных и их истории.
+                    </p>
+                </section>
+                <section class="section availability">
+                    <h2 class="ui header"><ya-tr-span data-index="85-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Second header" 
+                        data-translation="Второй заголовок" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Доступность</ya-tr-span></h2>
+                    <p class="text-p">
+                        <b>Доступность данных</b> - это способность получить доступ к информации и ресурсам в нужное время без 
+                        ненормативного задержания или прерывания. В информационной безопасности доступность означает, 
+                        что данные и сервисы должны быть доступны пользователям в моменты, когда им это нужно, и должны функционировать без сбоев или прерываний.
+                    </p>
+                    <p class="text-p">
+                        Этот аспект информационной безопасности особенно важен для обеспечения непрерывной работы бизнес-процессов и удовлетворения потребностей пользователей. 
+                        Отказ в доступе к данным или сервисам может привести к серьезным негативным последствиям, таким как потеря доходов, ущерб репутации бренда, 
+                        потеря клиентов и нарушение доверия.
+                    </p>
+                    <p class="text-p">
+                        Для обеспечения доступности данных применяются различные методы и технологии, такие как:
+                    </p>
+                    <ol class="list availability-list">
+                        <li class="availability-li">
+                            <p class="text-p text-list-p">
+                                <b>Резервное копирование и восстановление:</b> Создание резервных копий данных и систем, чтобы в случае сбоя или аварии можно было быстро 
+                                восстановить работоспособность.
+                            </p>
+                        </li>
+                        <li class="availability-li">
+                            <p class="text-p text-list-p">
+                                <b>Механизмы отказоустойчивости:</b> Использование высокодоступных архитектур и резервирования ресурсов для обеспечения непрерывной работы систем 
+                                даже в случае отказа части инфраструктуры.
+                            </p>
+                        </li>
+                        <li class="availability-li">
+                            <p class="text-p text-list-p">
+                                <b>Управление нагрузкой и балансировка нагрузки:</b> Распределение нагрузки между различными ресурсами для предотвращения перегрузок и 
+                                обеспечения равномерной доступности.
+                            </p>
+                        </li>
+                        <li class="availability-li">
+                            <p class="text-p text-list-p">
+                                <b>Мониторинг и управление производительностью:</b> Постоянный мониторинг состояния систем и ресурсов для быстрого обнаружения и реагирования 
+                                на угрозы для доступности.
+                            </p>
+                        </li>
+                        <li class="availability-li">
+                            <p class="text-p text-list-p">
+                                <b>Защита от отказа в обслуживании (DDoS):</b> Применение механизмов для предотвращения и смягчения последствий DDoS-атак, которые могут привести 
+                                к отказу в доступе к данным и сервисам.
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+                <section class="section data">
+                    <h2 class="ui header"><ya-tr-span data-index="85-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Second header" 
+                        data-translation="Второй заголовок" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Данные</ya-tr-span></h2>
+                    <p class="text-p">Что такое <b>данные?</b></p>
+                    <ul class="list data-list">
+                        <li class="list-data-li">
+                            <p class="text-p text-list-p">
+                                В контексте информационных технологий, данные представляют собой фрагменты информации, 
+                                которые могут быть записаны, хранены, обработаны и переданы компьютерными системами. 
+                                Данные могут быть представлены в различных форматах и типах, включая текст, числа, изображения, 
+                                аудио- и видеофайлы, а также структурированные данные в базах данных.
+                            </p>
+                        </li>
+                        <li class="list-data-li">
+                            <p class="text-p text-list-p">
+                                Данные могут иметь различную степень значимости и конфиденциальности. Например, личные данные пользователей, 
+                                такие как имена, адреса, номера телефонов или финансовые сведения, являются чувствительной информацией, 
+                                требующей особой защиты. В то же время, данные о состоянии системы или результаты операций могут быть менее 
+                                чувствительными и требовать меньшей степени защиты.
+                            </p>
+                        </li>
+                        <li class="list-data-li">
+                            <p class="text-p text-list-p">
+                                Обработка и анализ данных являются ключевыми аспектами многих информационных технологий, таких как аналитика данных, 
+                                машинное обучение, искусственный интеллект и другие. В связи с этим важно обеспечить правильную защиту данных от несанкционированного 
+                                доступа, изменений или утраты.
+                            </p>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            
+            <aside class="side-bar">боковой сайд бар</aside>
+        </div>
+        <div class="ui buttons">
+            <a class="page-pagination-link current">
+                <button class="ui button"><ya-tr-span data-index="225-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="One" data-translation="Раз" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">1</ya-tr-span></button>
+            </a><a href="page_2.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Two" data-translation="Два" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">2</ya-tr-span></button>
+            </a><a href="page_3.html" class="page-pagination-link">
+                <button class="ui button" ><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Three" data-translation="Три" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">3</ya-tr-span></button>
+            </a><a href="page_4.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Four" data-translation="Четыре" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">4</ya-tr-span></button>
+            </a><a href="page_5.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Five" data-translation="Пять" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">5</ya-tr-span></button>
+            </a><a href="page_6.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Six" data-translation="Шесть" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">6</ya-tr-span></button>       
+            </a>
+        </div>
+        
+    </main>
+    <footer class="page-footer">
+           
+    </footer>
+    
+</body>
+</html>

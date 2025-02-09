@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/semantic-ui-css/semantic.min.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script src="node_modules/semantic-ui-css/semantic.min.js"></script>
+    <title>Безопасность Web-ресурсов</title>
+</head>
+<body>
+    <header class="page-header">
+        <nav class="header-nav nav">
+            <div class="ui link list nav-list">
+                <a class="item" href="index.html"><ya-tr-span data-index="158-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Home" data-translation="Главная" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Главная</ya-tr-span></a>
+                <a class="item" href="page_2.html"><ya-tr-span data-index="159-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Security" data-translation="Защита" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Защита</ya-tr-span></a>
+                <div class="active item"><ya-tr-span data-index="159-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Injections" data-translation="Инъекции" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Инъекции</ya-tr-span></div>
+                <a class="item" href="page_4.html"><ya-tr-span data-index="159-3" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="csrf" data-translation="csrf" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">CSRF</ya-tr-span></a>
+                <a class="item" href="page_5.html"><ya-tr-span data-index="159-4" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Protection Analysis" data-translation="Анализ Защиты" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Анализ Защиты</ya-tr-span></a>
+                <a class="item" href="page_6.html"><ya-tr-span data-index="159-5" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Buffer overflow" data-translation="Переполнение буфера" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Переполнение буфера</ya-tr-span></a>
+            </div>
+        </nav>
+    </header>
+    <main class="page-main">
+        <h1 class="ui header"><ya-tr-span class="main-header" data-index="84-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="First header" 
+            data-translation="Первый заголовок" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">Безопасность веб-приложений: анализ методов защиты от атак на уровне Backend</ya-tr-span></h1>
+        <div class="container-grid">
+            <div class="container">
+                <section class="section injection">
+                    <h2 class="title-h2">Инъекции SQL (англ. SQL Injection)</h2>
+                    <p class="text-p">Веб-сайты осуществляют запросы к структурированным данным, хранящимся в базах 
+                        данных, в то время как пользователи взаимодействуют с этими данными через различные формы 
+                        для ввода и отображения информации. Например, при процессе аутентификации пользователи 
+                        предоставляют свои учетные данные, такие как логин и пароль, которые затем проверяются на сервере. 
+                        В базе данных содержится информация о пользователях и их соответствующие уровни доступа. Однако, 
+                        иногда разработчики сайтов не учитывают возможность того, что в поле для ввода могут быть введены данные, 
+                        которые могут нарушить стандартную работу сервера. В результате сервер может неправильно интерпретировать 
+                        полученные данные как команду для выполнения определенных действий. Этой уязвимостью и может воспользоваться 
+                        злоумышленник, например, подменить пользователя и зайти под видом администратора.
+                    </p>
+                    <p class="text-p"><b>Продемонстрируем на примере</b></p>
+                    <p class="text-p">У нас есть абстрактный сервис авторизации - <b>"auther"</b> с базой данной - <span class="outline">users</span>, у которой такие поля: 
+                        <span class="outline">username</span> и <span class="outline">password</span>. Также на нашем веб-сайте есть форма входа, и пользователь вводит следующие данные:</p>
+                    <p class="text-p">Login: <sapn class="outline">admin</span></p>
+                    <p class="text-p">Password: <sapn class="outline">password</span></p>
+                    <p class="text-p">В обычном случае, запрос к базе данных может выглядеть примерно так:</p>
+                    <p class="text-p">
+                        <code class="code"><span class="color-comand">SELECT</span> * <span class="color-comand">FROM</span> users 
+                            <span class="color-comand">WHERE</span> username=<span class="color-input">'admin'</span><span class="color-comand">AND</span> 
+                            password=<span class="color-input">'password'</span>;
+                        </code>
+                    </p>
+                    <p class="text-p">Но так как сервис подвержен SQL-инъекциям, злоумышленник может ввести:</p>
+                    <p class="text-p">
+                        <code class="code"><span class="color-comand">SELECT</span> * <span class="color-comand">FROM</span> users 
+                            <span class="color-comand">WHERE</span> username=<span class="color-input">'admin'</span><span class="color-comand">AND</span> 
+                            password=<span class="color-input">'password'</span> <span class="color-comand">OR</span> <span class="color-input">'1'</span> = 
+                            <span class="color-input">'1'</span>;
+                        </code>
+                    </p>
+
+                    <p class="text-p">Так как условия <b>'1'='1'</b> - всегда истина, это позволит успешно войти в систему, не зная правильного пароля 
+                        администратора.</p>
+                    <p class="text-p">Причиной данной уязвимости способствуют также:</p>
+                    <ul class="list injection-list">
+                        <li class="injecton-li">
+                            <p class="text-p">
+                                Отсутствие фильтрации запроса. Разработчик забывает проверить данные, введенные пользователем.
+                            </p>
+                        </li>
+                        <li class="injecton-li">
+                            <p class="text-p">
+                                Намекающие ошибки. Иногда ошибки, которые возвращает сервер - помогают злоумышленнику понять в каком направлении
+                                 нужно продолжать править вредоносный код, чтобы составить правильную команду для выполнения.
+                            </p>
+                        </li>
+                    </ul>
+                    
+                </section>
+                <section class="section scripting">
+                    <h2 class="title-h2">XSS (англ. Cross-Site Scripting — «межсайтовый скриптинг»)</h2>
+                    <p class="text-p">Данная атака внедряет вредоносный код (чаще всего <b>JavaScript</b>) в веб-страницу или веб-приложение, которое потом 
+                        выполняется в браузере других пользователей. Эта уязвимость возникает, когда веб-приложение не надлежащим образом фильтрует 
+                        или экранирует ввод пользователя перед его выводом на веб-страницу.</p>
+                    <p class="text-p">Рассмотрим самые распространенные виды <b>XSS:</b></p>
+                    <ul class="list scripting-list">
+                        <li class="scripting-li">
+                            <p class="text-p">
+                                <b>Рефлектированный (англ. Reflected XSS)</b> Злоумышленник создает специальную ссылку, которая содержит вредоносный код, и отправляет 
+                                ее пользователю. Затем пользователь переходит по этой ссылке, а сервер отражает этот вредоносный код пользователю, исполняя его в контексте его сессии.
+                            </p>
+                        </li>
+                        <li class="scripting-li">
+                            <p class="text-p">
+                                <b>DOM-based XSS</b> Вредоносный код исполняется на стороне клиента в браузере пользователя путем манипуляции DOM.
+                            </p>
+                        </li>
+                        <li class="scripting-li">
+                            <p class="text-p">
+                                <b>Хранимый (англ. Stored XSS)</b> Вредоносный скрипт хранится на сервере и выполняется при каждом запросе к странице.
+                            </p>
+                        </li>
+                    </ul>
+                    <p class="text-p"><b>Продемонстрируем на примере</b></p>
+                    <p class="text-p">Снова есть сервис авторизации - <b>"auther"</b>, который также не фильтрует введенные данные.
+                        Форма выглядит следующим образом:</p>
+
+
+<pre class="scripting-code">
+<code class="code code-html">
+<span class="code-html-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="code-html-color">&lt;html&gt;</span>
+<span class="code-html-color">&lt;head&gt;</span>
+    <span class="code-html-color">&lt;title</title>&gt;</span>Auther<span class="code-html-color">&lt;/title&gt;</span>
+<span class="code-html-color">&lt;/head&gt;</span>
+<span class="code-html-color">&lt;body&gt;</span>
+    <span class="code-html-color">&lt;h1&gt;</span>Добро пожаловать!<span class="code-html-color">&lt;/h1&gt;</span>
+    <span class="code-html-color">&lt;p&gt;</span>Введите данные для авторизации:<span class="code-html-color">&lt;/p&gt;</span>
+    <span class="code-html-color">&lt;form method</span>=<span class="code-html-green">"post"</span><span class="code-html-color">&gt;</span>
+        <span class="code-html-color">&lt;input type</span>=<span class="code-html-green">"text"</span><span class="code-html-color"> name</span>=<span class="code-html-green">"username"</span><span class="code-html-color">&gt;</span>
+        <span class="code-html-color">&lt;input type</span>=<span class="code-html-green">"password"</span><span class="code-html-color"> name</span>=<span class="code-html-green">"password"</span><span class="code-html-color">&gt;</span>
+        <span class="code-html-color">&lt;input type</span>=<span class="code-html-green">"submit"</span><span class="code-html-color"> value</span>=<span class="code-html-green">"Отправить"</span><span class="code-html-color">&gt;</span>
+    <span class="code-html-color">&lt;/form&gt;</span>
+<span class="code-html-color">&lt;/body&gt;</span>
+<span class="code-html-color">&lt;/html&gt;</span>
+</code>  
+</pre>
+
+                <p class="text-p">При обработке введенного имени <span class="outline">username</span> на сервере предполагается, что оно будет безопасно 
+                    отображено в личном кабинете. Однако, если введенное имя не фильтруется должным образом, злоумышленник может 
+                    использовать это для внедрения вредоносного кода JavaScript.</p>
+                <p class="text-p">Допустим, он ввел в <span class="outline">username:</span></p>
+                <code class="code-html code"><span class="code-html-color">&lt;script&gt;</span>alert('XSS atack');<span class="code-html-color">&lt;/script&gt;</span></code>
+                
+                <p class="text-p">Теперь, если страница приветствия не экранирует этот ввод, этот скрипт будет внедрен в HTML-код страницы и выполнится
+                     в браузере другого пользователя, который просмотрит страницу приветствия.</p>
+                <p class="text-p">Данный вид атаки опасен еще из-за того, что могут быть похищены куки, которые впоследствии могут использовать при авторизации в сервис.</p>
+            </section>
+                <section class="section over-buffer">
+                    <h2 class="title-h2">Переполнение буфера</h2>
+                    <p class="text-p">Это тип атаки, при котором злоумышленник может ввести в программу больше данных, чем она может принять. Как следствие это приводит 
+                        к перезаписи памяти за пределы выделенного буфера, что в свою очередь может привести к сбою программы.</p>
+                    <p class="text-p">Потенциальные последствия переполнения буфера включают:</p>
+                    <ul class="list over-list">
+                        <li class="over-li">
+                            <p class="text-p">
+                                <b>DoS (англ. denial-of-service attack «отказ в обслуживании»):</b> Путем переполнения буфера - обслуживание запросов пользователей станет 
+                                невозможным. Это может привести к временному или длительному отказу в обслуживании.
+                            </p>
+                        </li>
+                        <li class="over-li">
+                            <p class="text-p">
+                                <b>Получение полного контроля над сервером:</b> Если злоумышленнику удастся выполнить код, помещенный в буфер, он сможет получить полный контроль над сервером.
+                            </p>
+                        </li>
+                    </ul>
+                    <p class="text-p"><b>Продемонстрируем на примере</b></p>
+                    <p class="text-p">У нас есть сервис, который хранит пароли пользователей - <b>"keySaver"</b>. Для хранения он использует хеш-таблицу, но длина символов в ней может быть до 10 byte.</p>
+                    <p class="text-p">Предположим, у нас есть уязвимая функция, которая копирует введенный пользователем пароль в хеш-таблицу без проверки на длину ввода:</p>
+                    <pre>
+                        <code class="code-py code">
+<span class="py-color">function</span> <span class="py-color-blue">savePassword</span>(<span class="py-color-blue">password</span>) {
+    // Создаем хеш-таблицу для хранения паролей
+    // Предположим, что длина хеш-таблицы ограничена 10 байтами
+    <span class="py-color-blue">passwordTable </span>= <span class="py-color-blue">allocateHashTable</span>(<span class="py-color-orange">10</span>); 
+
+    // Копируем введенный пароль в хеш-таблицу
+    <span class="py-color-blue">copyData</span>(<span class="py-color-blue">password</span>, <span class="py-color-blue">passwordTable</span>);
+}
+                        </code>
+                    </pre>
+                    <p class="text-p">Пусть теперь злоумышленник решил провести атаку на эту функцию и ввел пароль длиннее 10 байт, чтобы переполнить буфер:</p>
+
+                    <code class="code-py code">
+                        // Пароль, длиннее 10 байт, содержащий вредоносный код<br>
+                        <span class="py-color-blue">badPayload</span> = <span class="py-color-green">"AAAAAAAAAA"</span> + <span class="py-color-green">"codecode"</span>;<br>
+                         // Запускаем функцию для сохранения вредоносного пароля<br>
+                        <span class="py-color-blue">savePassword</span>(<span class="py-color-blue">badPayload</span>);
+                    </code>
+                    <p class="text-p">Здесь и произойдет переполнение буфера. Лишние символы "codecode" перезапишут данные за пределами выделенного пространства памяти в хеш-таблице. 
+                        За которым могут последовать сбои в системе.</p>
+                </section>
+            </div>
+            
+            <aside class="side-bar">боковой сайд бар</aside>
+        </div>
+        
+        <div class="ui buttons">
+            <a href="index.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-0" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="One" data-translation="Раз" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">1</ya-tr-span></button>
+            </a><a href="page_2.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-1" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Two" data-translation="Два" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">2</ya-tr-span></button>
+            </a><a class="page-pagination-link current">
+                <button class="ui button" ><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Three" data-translation="Три" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">3</ya-tr-span></button>
+            </a><a href="page_4.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Four" data-translation="Четыре" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">4</ya-tr-span></button>
+            </a><a href="page_5.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Five" data-translation="Пять" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">5</ya-tr-span></button>
+            </a><a href="page_6.html" class="page-pagination-link">
+                <button class="ui button"><ya-tr-span data-index="225-2" data-translated="true" data-source-lang="en" data-target-lang="ru" data-value="Six" data-translation="Шесть" data-ch="0" data-type="trSpan" style="visibility: inherit !important;">6</ya-tr-span></button>       
+            </a>
+        </div>  
+    </main>
+    <footer class="page-footer">
+        <div>футер</div>
+    </footer>
+    
+</body>
+</html>
